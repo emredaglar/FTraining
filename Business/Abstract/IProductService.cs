@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -12,11 +13,13 @@ namespace Business.Abstract
     public interface IProductService
     {
         
-        List<Product> getAll();
+        IDataResult<List<Product>> getAll();
 
-        List<Product> getAllByCategoryId(int id);
-        List<Product> getByUnitPrice(decimal min,decimal max);
-        List<ProductDetailDto> GetProductDetail();
+        IResult Add(Product product);
+
+        IDataResult<List<Product>> getAllByCategoryId(int id);
+        IDataResult<List<Product>> getByUnitPrice(decimal min,decimal max);
+        IDataResult<List<ProductDetailDto>> GetProductDetail();
 
     }
 }
